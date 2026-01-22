@@ -380,6 +380,7 @@ img {
         -webkit-transform: rotate(0deg);
         transform: rotate(0deg);
     }
+
     100% {
         -webkit-transform: rotate(360deg);
         transform: rotate(360deg);
@@ -391,6 +392,7 @@ img {
         -webkit-transform: rotate(0deg);
         transform: rotate(0deg);
     }
+
     100% {
         -webkit-transform: rotate(360deg);
         transform: rotate(360deg);
@@ -899,6 +901,7 @@ img {
 }
 
 @media only screen and (max-width: 1200px) {
+
     .hero-area .owl-prev,
     .hero-area .owl-next {
         left: 30px;
@@ -1342,6 +1345,7 @@ img {
 }
 
 @media only screen and (max-width: 1200px) {
+
     .testimonials-slides .owl-prev,
     .testimonials-slides .owl-next {
         left: 0;
@@ -1392,6 +1396,7 @@ img {
 }
 
 @media only screen and (min-width: 350px) and (max-width: 1200px) {
+
     .south-editor-area .editor-content-area,
     .south-editor-area .editor-thumbnail {
         -webkit-box-flex: 0;
@@ -1402,6 +1407,7 @@ img {
 }
 
 @media only screen and (max-width: 1200px) {
+
     .south-editor-area .editor-content-area,
     .south-editor-area .editor-thumbnail {
         -webkit-box-flex: 0;
@@ -1558,7 +1564,7 @@ img {
     font-weight: 400;
 }
 
-.weekly-office-hours{
+.weekly-office-hours {
     text-align: center;
 }
 
@@ -2395,6 +2401,7 @@ img {
 }
 
 @media only screen and (min-width: 350px) and (max-width: 1200px) {
+
     .leave-comment-area .comment-form,
     .leave-comment-area .contact-form,
     .south-contact-area .comment-form,
@@ -2404,6 +2411,7 @@ img {
 }
 
 @media only screen and (max-width: 1200px) {
+
     .leave-comment-area .comment-form,
     .leave-comment-area .contact-form,
     .south-contact-area .comment-form,
@@ -2746,23 +2754,23 @@ body {
     }
 }
 
-.float{
+.float {
     display: flex;
-	position:fixed;
-	width:65px;
-	height:65px;
-	bottom:40px;
-	right:95px;
-	background-color:#25d366;
-	color:#FFF;
-	border-radius:50px;
+    position: fixed;
+    width: 65px;
+    height: 65px;
+    bottom: 40px;
+    right: 95px;
+    background-color: #25d366;
+    color: #FFF;
+    border-radius: 50px;
     justify-content: center;
-    font-size:50px;
-	box-shadow: 2px 2px 3px #999;
-    z-index:100;
+    font-size: 50px;
+    box-shadow: 2px 2px 3px #999;
+    z-index: 100;
 }
 
-.my-float{
+.my-float {
     align-self: center;
 }
 
@@ -2772,152 +2780,208 @@ body {
    - Drawer (panel lateral) + badge + botón flotante
    ========================================================= */
 
-.cart-btn{ /* NUEVO: botón del carrito en el menú */
-  background: transparent;
-  border: 0;
-  cursor: pointer;
-  font-size: 18px;
-  position: relative;
-  padding: 8px 10px;
-}
-.cart-badge{ /* NUEVO: contador */
-  display: inline-block;
-  min-width: 18px;
-  height: 18px;
-  line-height: 18px;
-  border-radius: 999px;
-  text-align: center;
-  font-size: 12px;
-  margin-left: 6px;
-  background: #283c77;
-  color: #fff;
-  padding: 0 6px;
+.cart-btn1 {
+    /* NUEVO: botón del carrito en el menú */
+
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-size: 18px;
+    margin-left: 40px;
+    padding: 8px 10px;
 }
 
-.cart-overlay{ /* NUEVO: fondo oscuro */
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,.45);
-  z-index: 9998;
+.cart-badge {
+    /* NUEVO: contador */
+    display: inline-block;
+    min-width: 18px;
+    height: 18px;
+    line-height: 18px;
+    border-radius: 999px;
+    text-align: center;
+    font-size: 12px;
+    margin-left: 6px;
+    background: #283c77;
+    color: #fff;
+    padding: 0 6px;
 }
 
-.cart-drawer{ /* NUEVO: panel lateral */
-  position: fixed;
-  top: 0;
-  right: 0;
-  height: 100vh;
-  width: min(440px, 92vw);
-  background: #fff;
-  z-index: 9999;
-  transform: translateX(110%);
-  transition: transform .25s ease;
-  box-shadow: -12px 0 30px rgba(0,0,0,.18);
-  display: flex;
-  flex-direction: column;
-}
-.cart-drawer.open{ transform: translateX(0); }
-
-.cart-header{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  padding: 16px;
-  border-bottom: 1px solid #eee;
-}
-.cart-close{
-  background: transparent;
-  border: 0;
-  font-size: 18px;
-  cursor: pointer;
+.cart-overlay {
+    /* NUEVO: fondo oscuro */
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, .45);
+    z-index: 9998;
 }
 
-.cart-items{
-  padding: 12px 16px;
-  overflow:auto;
-  flex: 1;
-}
-.cart-item{
-  display:flex;
-  gap: 10px;
-  padding: 12px 0;
-  border-bottom: 1px solid #f0f0f0;
-}
-.cart-item img{
-  width: 60px;
-  height: 60px;
-  object-fit: cover;
-  border-radius: 12px;
-  background: #f6f6f6;
-}
-.cart-item h6{ margin: 0 0 4px 0; font-size: 14px; }
-.cart-item .meta{ font-size: 13px; opacity: .85; }
-
-.cart-field{ margin-top: 8px; }
-.cart-field label{ display:block; font-size:12px; opacity:.8; margin-bottom:4px; }
-.cart-field input{
-  width: 100%;
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  padding: 8px 10px;
-  font-size: 13px;
+.cart-drawer {
+    /* NUEVO: panel lateral */
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    width: min(440px, 92vw);
+    background: #fff;
+    z-index: 9999;
+    transform: translateX(110%);
+    transition: transform .25s ease;
+    box-shadow: -12px 0 30px rgba(0, 0, 0, .18);
+    display: flex;
+    flex-direction: column;
 }
 
-.cart-qty{
-  display:flex;
-  align-items:center;
-  gap: 6px;
-  margin-top: 10px;
-}
-.cart-qty button{
-  width: 28px;
-  height: 28px;
-  border-radius: 8px;
-  border: 1px solid #ddd;
-  background: #fafafa;
-  cursor: pointer;
-}
-.cart-remove{
-  border: 0;
-  background: transparent;
-  cursor: pointer;
-  opacity: .75;
-  margin-left: auto;
-  font-size: 13px;
+.cart-drawer.open {
+    transform: translateX(0);
 }
 
-.cart-footer{
-  padding: 14px 16px;
-  border-top: 1px solid #eee;
-  display: grid;
-  gap: 10px;
+.cart-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px;
+    border-bottom: 1px solid #eee;
 }
-.cart-total{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
+
+.cart-close {
+    background: transparent;
+    border: 0;
+    font-size: 18px;
+    cursor: pointer;
 }
-.cart-clear, .cart-checkout{
-  width: 100%;
-  border: 0;
-  padding: 12px 14px;
-  border-radius: 12px;
-  cursor: pointer;
+
+.cart-items {
+    padding: 12px 16px;
+    overflow: auto;
+    flex: 1;
 }
-.cart-clear{ background:#f2f2f2; }
-.cart-checkout{ background:#283c77; color:#fff; }
+
+.cart-item {
+    display: flex;
+    gap: 10px;
+    padding: 12px 0;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.cart-item img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 12px;
+    background: #f6f6f6;
+}
+
+.cart-item h6 {
+    margin: 0 0 4px 0;
+    font-size: 14px;
+}
+
+.cart-item .meta {
+    font-size: 13px;
+    opacity: .85;
+}
+
+.cart-field {
+    margin-top: 8px;
+}
+
+.cart-field label {
+    display: block;
+    font-size: 12px;
+    opacity: .8;
+    margin-bottom: 4px;
+}
+
+.cart-field input {
+    width: 100%;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 8px 10px;
+    font-size: 13px;
+}
+
+.cart-qty {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 10px;
+}
+
+.cart-qty button {
+    width: 28px;
+    height: 28px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    background: #fafafa;
+    cursor: pointer;
+}
+
+.cart-remove {
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+    opacity: .75;
+    margin-left: auto;
+    font-size: 13px;
+}
+
+.cart-footer {
+    padding: 14px 16px;
+    border-top: 1px solid #eee;
+    display: grid;
+    gap: 10px;
+}
+
+.cart-total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.cart-clear,
+.cart-checkout {
+    width: 100%;
+    border: 0;
+    padding: 12px 14px;
+    border-radius: 12px;
+    cursor: pointer;
+}
+
+.cart-clear {
+    background: #f2f2f2;
+}
+
+.cart-checkout {
+    background: #283c77;
+    color: #fff;
+}
 
 /* NUEVO: botón flotante para agregar el uniforme seleccionado (páginas de escuela) */
-.preorder-fab{
-  position: fixed;
-  right: 16px;
-  bottom: 16px;
-  z-index: 9999;
-  border: 0;
-  border-radius: 999px;
-  padding: 12px 14px;
-  cursor: pointer;
-  background: #283c77;
-  color: #fff;
-  font-weight: 600;
-  box-shadow: 0 10px 24px rgba(0,0,0,.18);
+.preorder-fab {
+    position: fixed;
+    right: 16px;
+    bottom: 16px;
+    z-index: 9999;
+    border: 0;
+    border-radius: 999px;
+    padding: 12px 14px;
+    cursor: pointer;
+    background: #283c77;
+    color: #fff;
+    font-weight: 600;
+    box-shadow: 0 10px 24px rgba(0, 0, 0, .18);
+}
+
+.cart-btn {
+    padding: 1rem;
+
+}
+
+.cart-btn i {
+    font-size: 1.25rem;
+    color: #283c77;
+
+}
+
+.cart-btn:hover i {
+    color: #3b82f6;
 }
