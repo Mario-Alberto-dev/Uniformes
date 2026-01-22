@@ -19,8 +19,6 @@ shop page styles
     align-items: center;
     justify-content: center;
 
-    border: solid red 3px;
-
 }
 
 .shop-img {
@@ -52,7 +50,7 @@ shop page styles
     display: flex;
     flex-wrap: wrap;
 
-    border: solid 2px;
+   
 }
 
 .ima {

@@ -1,59 +1,56 @@
+/* =====================
+   STATE
+===================== */
 let selectedProduct = null;
 let quantity = 1;
 
-document.addEventListener("DOMContentLoaded", () => {
-
-  window.showProduct = function (imageSrc) {
-    const productDetail = document.getElementById("productDetail");
-    const productImage = document.getElementById("productImage");
-    const productName = document.getElementById("productName");
-    const productSize = document.getElementById("productSize");
-    const qtyValue = document.getElementById("qtyValue");
-
-    // SAFETY CHECK
-    if (!productDetail || !productImage || !productName || !productSize || !qtyValue) {
-      console.error("Product detail elements not found in DOM");
-      return;
-    }
-
-    quantity = 1;
-
-    selectedProduct = {
-      image: imageSrc,
-      size: productSize.value,
-      quantity: quantity
-    };
-
-    productImage.src = imageSrc;
-    productName.textContent = imageSrc
-      .split("/")
-      .pop()
-      .replace(".jpg", "");
-
-    qtyValue.textContent = quantity;
-    productDetail.hidden = false;
+/* =====================
+   RENDER SELECTED PRODUCT
+===================== */
+function showProduct(imageSrc) {
+  selectedProduct = {
+    image: imageSrc,
+    name: imageSrc.split("/").pop().replace(".jpg", ""),
+    size: "CH",
+    quantity: 1
   };
 
-  // SIZE CHANGE
-  document.getElementById("productSize")?.addEventListener("change", (e) => {
-    if (!selectedProduct) return;
-    selectedProduct.size = e.target.value;
-  });
+  quantity = 1;
 
-  // QUANTITY +
-  document.getElementById("qtyPlus")?.addEventListener("click", () => {
-    if (!selectedProduct) return;
-    quantity++;
-    selectedProduct.quantity = quantity;
-    document.getElementById("qtyValue").textContent = quantity;
-  });
+  document.getElementById("productImage").src = imageSrc;
+  document.getElementById("productName").textContent = selectedProduct.name;
+  document.getElementById("productSize").value = "CH";
+  document.getElementById("qtyValue").textContent = "1";
 
-  // QUANTITY -
-  document.getElementById("qtyMinus")?.addEventListener("click", () => {
-    if (!selectedProduct || quantity === 1) return;
-    quantity--;
-    selectedProduct.quantity = quantity;
-    document.getElementById("qtyValue").textContent = quantity;
-  });
+  document.getElementById("productDetail").hidden = false;
+}
 
+/* =====================
+   CONTROLS (this is the code you quoted)
+===================== */
+document.getElementById("productSize").addEventListener("change", (e) => {
+  if (!selectedProduct) return;
+  selectedProduct.size = e.target.value;
+});
+
+document.getElementById("qtyPlus").addEventListener("click", () => {
+  if (!selectedProduct) return;
+  quantity++;
+  selectedProduct.quantity = quantity;
+  document.getElementById("qtyValue").textContent = quantity;
+});
+
+document.getElementById("qtyMinus").addEventListener("click", () => {
+  if (!selectedProduct || quantity === 1) return;
+  quantity--;
+  selectedProduct.quantity = quantity;
+  document.getElementById("qtyValue").textContent = quantity;
+});
+
+/* =====================
+   ADD TO CART (final step)
+===================== */
+document.getElementById("addToCartBtn").addEventListener("click", () => {
+  if (!selectedProduct) return;
+  addToCart({ ...selectedProduct });
 });
