@@ -29,7 +29,7 @@ shop page styles
     justify-content: center;
     gap: 10px;
     list-style: none;
-    color: rgb(29, 29, 107);
+    color: #283c77
 }
 .inicio:hover{
   color: rgb(167, 167, 167)  ;
