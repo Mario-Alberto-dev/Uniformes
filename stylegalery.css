@@ -1,0 +1,287 @@
+@charset "utf-8";
+/* CSS Document */
+		
+		
+		.divprincipal{
+			width: 25%; 
+			float: left;
+		}
+	
+		.secundario{
+			width: 100%; 
+			
+		}
+
+		.divprincipalmorelos{
+			width: 50%; 
+			float: left;
+		}
+
+		.secundariomorelos{
+			width: 50%; 
+			float: right;
+		}
+
+		
+		.titulo{
+			background-color:#283c77;				
+		}
+		
+		#titulo{
+			color:#fff;
+			font-size:25px;
+
+		}
+		
+		.principal{
+			width:120px; 
+			height:200px;	
+		}
+				
+		.divizq{
+			width:50%;
+			height: auto;
+			float: left; 
+			text-align: center;
+			border-style: solid;
+			border-width: 1px;
+		}
+			
+		.intizq{
+			width:40%; 
+			float: left; 
+			text-align: center
+				
+		}
+			
+		.centro{
+			width:20%; 
+			margin-top: 15%;
+			float:left; 
+			text-align: center;
+		}
+			
+		.intder{
+			width:40%; 
+			float:right; 
+			text-align: center;
+		}
+			
+		.divder{
+			width:50%;
+			height: auto;
+			float: right; 
+			text-align: center;				
+			border-style: solid;
+			border-width: 1px;
+		}
+		
+		.divlibre{
+			width:100%;
+			height: auto; 
+			text-align: center;
+			border-style: solid;
+			border-width: 1px;
+			
+		}
+			
+		@media only screen and (max-width: 1000px) {
+			.divizq{
+				width:100%;
+				height:auto;
+				padding-bottom:20px;
+				float: none; 
+				text-align: center;
+			}
+				
+			.divder{
+				width:100%;
+				height:auto;
+				padding-bottom:20px;
+				float: right; 
+				text-align: center;
+			}
+		}
+			
+		@media only screen and (min-width: 701px) {
+			.producto{
+				font-size:1.5vw;
+				line-height: 25px;
+				color: black;
+			}
+		}
+			
+		#t_producto{
+			font-size:1.5vw;
+			cursor: pointer;				
+			line-height: 20px;
+			margin: 3px;
+		}
+			
+		@media only screen and (max-width: 700px) {
+			.divprincipal{
+				width: 100%; 
+				float: none;
+			}
+					
+			.secundario{
+				width: 100%; 
+				float: right;
+			}
+			
+			.divprincipalmorelos{
+				width: 100%; 
+				float: none;
+			}
+					
+			.secundariomorelos{
+				width: 100%; 
+				float: right;
+			}
+					
+					
+			.centro{				
+				width:20%; 
+				margin-top: 20%;
+				float:left; 
+				text-align: center;
+				
+			}
+					
+			
+			
+			#t_producto{
+				font-size:12px;
+				line-height: 10px;
+				margin: 3px;
+			}
+				
+			.principal{
+				width:80px; 
+				height:100px;
+					
+			}
+				
+			.producto{
+				font-size:12px;
+			}
+			
+		}
+			
+		@media only screen and (max-width: 400px) {
+			.centro{
+				visibility: hidden;
+			}
+				
+				
+		}
+			
+
+		#contenedor{
+			width:50vw;
+			min-width: 150px;
+		}
+		
+		
+		#contenedor_M{
+			width:10vw;
+			min-width: 150px;
+		}
+
+		#contenedor_IMA{
+			width: 25vw;
+			min-width: 150px;
+		}
+		#contenedor_logos{
+			width: 20vw;
+			min-width: 150px;
+		}
+		
+    .imagen_galeria{
+			width:10vw; 
+			min-width: 70px;
+			border: #CCD1D1 1px solid;
+			cursor:pointer;
+			
+	
+		}
+		.imagen_galeria2{
+			width: 10vw;
+			min-width: 70px;
+			border: #CCD1D1 1px solid;
+			cursor:pointer;
+			height: auto;
+
+		}
+	.slider-ohga {
+			width: 100%;
+			margin: auto;
+			overflow: hidden;
+		}
+	.slider-ohga ul {
+			display: flex;
+			padding: 0;
+			width: 800%;
+			animation: Cambio 20s infinite;
+			
+			/*animation: Cambio 20s infinite;*/
+			animation-direction: alternate;
+			
+		}
+	
+			
+		
+			.slider-ohga li{
+				width: 100%;
+				list-style: none;
+			}
+			
+			@media only screen and (min-width: 601px) {
+			.slider-ohga img {
+				width:54vw;
+				padding-left:35%;
+			
+			}		
+			}
+			
+			@media only screen and (max-width: 600px) {
+			.slider-ohga img {
+				width:70vh;
+				padding-left:15%;
+			
+			}		
+			}
+		
+
+		
+		@keyframes Cambio {
+			0% {margin-left:0;}
+			10% {margin-left:0;}
+			
+			13% {margin-left:-100%;}
+			23% {margin-left:-100%;}
+			
+			26% {margin-left:-200%;}
+			36% {margin-left:-200%;}
+			
+			39% {margin-left:-300%;}
+			49% {margin-left:-300%;}
+			
+			52% {margin-left:-400%;}
+			62% {margin-left:-400%;}
+			
+			65% {margin-left:-500%;}
+			76% {margin-left:-500%;}
+			
+			79% {margin-left:-600%;}
+			90% {margin-left:-600%;}
+			
+			94% {margin-left:-700%;}
+			100% {margin-left:-700%;}
+		} 
+	
+.img-ima-gale{
+border-radius: 20px;
+width: 100%;
+height: 50%;
+}

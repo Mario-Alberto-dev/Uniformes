@@ -1,0 +1,99 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* *****************************************************************
+shop page styles 
+********************************************************************/
+
+.shop-view {
+    width: 80%;
+    height: auto;
+
+    margin: 0 auto;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.shop-img {
+    width: 40%;
+    height: auto;
+}
+
+.row-shop {
+
+    margin-top: 6rem;
+    display: flex;
+    flex-wrap: wrap;
+
+}
+
+.main-logo {
+    width: 20vw;
+    min-width: 70px;
+}
+
+.text-produt {
+    color: black;
+}
+
+.clothes-container {
+    width: 100%;
+    height: auto;
+    margin: 2rem;
+    display: flex;
+    flex-wrap: wrap;
+
+   
+}
+
+.ima {
+    margin: 1rem;
+}
+
+.imagen_galeria {
+    width: 10vw;
+    min-width: 70px;
+    border: #CCD1D1 1px solid;
+    cursor: pointer;
+}
+
+/*******************************
+PRODUCT FOMR 
+*******************************/
+
+.product-detail{
+    margin: 0 auto;
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.product-form {
+    margin-top: 10px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    background: #fafafa;
+    display: flex;
+    margin: 0 auto;
+}
+
+.qty-control {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 10px 0;
+}
+
+.qty-control button {
+    width: 30px;
+    height: 30px;
+    font-size: 18px;
+}
