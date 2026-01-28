@@ -8,6 +8,33 @@
 shop page styles 
 ********************************************************************/
 
+.shop-bar{
+    width: 100%;
+    height: auto;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    position: fixed;
+}
+
+.cart-nav{
+    list-style: none;
+}
+
+.inicio{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    list-style: none;
+    color: rgb(29, 29, 107);
+}
+.inicio:hover{
+  color: rgb(167, 167, 167)  ;
+}
+
 .shop-view {
     width: 80%;
     height: auto;

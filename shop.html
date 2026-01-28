@@ -9,17 +9,24 @@
     <!-- Hoja de Estilos CSS -->
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="styleshop.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 </head>
 
 <body>
 
-    <!-- NUEVO: Botón del carrito (pre-orden) -->
-    <li class="cart-nav">
-        <button type="button" id="cartBtn" class="cart-btn1" aria-label="Abrir carrito">
-            🛒 <span id="cartCount" class="cart-badge">0</span>
-        </button>
-    </li>
+    <div class="shop-bar">
+
+        <li class="cart-nav">
+            <button type="button" id="cartBtn" class="cart-btn1" aria-label="Abrir carrito">
+                🛒 <span id="cartCount" class="cart-badge">0</span>
+            </button>
+        </li>
+
+        <a class="inicio" href="index.html"><i class="fa-solid fa-house"></i>Volver al inicio</a>
+
+    </div>
 
     <!-- =====================================================
          NUEVO: Carrito de PRE-ORDEN (solo solicitud, no compra)
@@ -115,7 +122,7 @@
         </section>
 
         <div id="productDetail" class="product-detail" hidden>
-            
+
             <img id="productImage" alt="Producto seleccionado">
 
             <h3 id="productName"></h3>
@@ -138,10 +145,10 @@
 
             <button id="addToCart">Agregar Pre-Orden</button>
         </div>
-   
 
 
-       <!-- school containers -->
+
+        <!-- school containers -->
         <div class="clothes-container" id="clothesContainer"></div>
 
 
@@ -150,7 +157,7 @@
 
     <script src="db/Catalogo.js"></script>
     <script src="js/catalog-render.js"></script>
-<script src="js/product-detail.js"></script>
+    <script src="js/product-detail.js"></script>
     <script src="js/form.js"></script>
     <script src="js/filter.js"></script>
 
