@@ -2787,7 +2787,7 @@ body {
     background: none;
     cursor: pointer;
     font-size: 18px;
-    margin-left: 40px;
+    margin-left: 10px;
     padding: 8px 10px;
 
    
@@ -2934,7 +2934,7 @@ body {
     border-top: 1px solid #eee;
     display: grid;
     gap: 10px;
-    padding-bottom: calc(14px + env(safe-area-inset-bottom));
+    padding-bottom: calc(2.7rem + env(safe-area-inset-bottom));
     position: sticky;
     bottom: 0;
     background: #fff;
