@@ -2774,6 +2774,64 @@ body {
     align-self: center;
 }
 
+/* Botón flotante de Pre-orden (solo acceso a shop.html) */
+.float-preorder{
+    display: flex;
+    position: fixed;
+    width: 65px;
+    height: 65px;
+    bottom: 115px; /* queda arriba del botón de WhatsApp */
+    right: 95px;
+    background-color: #ff6a00;
+    color: #FFF;
+    border-radius: 50px;
+    justify-content: center;
+    align-items: center;
+    font-size: 32px;
+    box-shadow: 2px 2px 3px #999;
+    z-index: 101;
+    text-decoration: none;
+    animation: preorder-float 2.6s ease-in-out infinite;
+}
+
+.float-preorder:hover{
+    filter: brightness(1.05);
+}
+
+@keyframes preorder-float{
+    0%, 100%{ transform: translateY(0); }
+    50%{ transform: translateY(-3px); }
+}
+
+/* Tooltip (solo aparece al pasar el mouse o enfocar con teclado) */
+.float-preorder .fab-tooltip{
+    position: absolute;
+    right: 78px;
+    background: rgba(0,0,0,.78);
+    color: #fff;
+    padding: 6px 10px;
+    border-radius: 10px;
+    font-size: 12px;
+    white-space: nowrap;
+    opacity: 0;
+    transform: translateY(2px);
+    pointer-events: none;
+    transition: opacity .15s ease, transform .15s ease;
+}
+
+.float-preorder:hover .fab-tooltip,
+.float-preorder:focus .fab-tooltip,
+.float-preorder:focus-visible .fab-tooltip{
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* En móvil, ocultamos el tooltip para que no estorbe */
+@media (hover: none){
+  .float-preorder .fab-tooltip{ display: none; }
+}
+
+
 
 /* =========================================================
    NUEVO: Estilos para PRE-ORDEN (carrito)
