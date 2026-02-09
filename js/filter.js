@@ -26,11 +26,61 @@ document.addEventListener("DOMContentLoaded", () => {
     );
   }
 
+  
+  function money(n){
+    try{
+      return Number(n || 0).toLocaleString("es-MX", { style:"currency", currency:"MXN" });
+    }catch{
+      return "$" + (n || 0);
+    }
+  }
+
+  function precioDesde(preciosPorTalla){
+    if (!preciosPorTalla) return null;
+    const vals = Object.values(preciosPorTalla).map(Number).filter(v => !isNaN(v));
+    if (!vals.length) return null;
+    return Math.min(...vals);
+  }
+
   function renderSchoolImages(school) {
     const container = document.getElementById("clothesContainer");
     container.innerHTML = "";
 
-    if (!school || !school.images?.length) {
+    if (!school) {
+      container.innerHTML = "<p>No products found</p>";
+      return;
+    }
+
+    // ✅ Nuevo: si hay products, render tipo Liverpool
+    if (Array.isArray(school.products) && school.products.length){
+      school.products.forEach(p => {
+        const card = document.createElement("article");
+        card.className = "product-card";
+
+        const desde = precioDesde(p.preciosPorTalla);
+        const desdeTxt = (desde != null) ? `Desde ${money(desde)}` : "";
+
+        card.innerHTML = `
+          <img src="${p.img}" alt="${(p.name || "Producto").replace(/"/g,'&quot;')}" loading="lazy">
+          <div class="p-name">${p.name || "Producto"}</div>
+          <div class="p-price">${desdeTxt}</div>
+        `;
+
+        card.addEventListener("click", () => {
+          if (typeof showProduct !== "function") {
+            console.error("showProduct is not defined");
+            return;
+          }
+          showProduct(p);
+        });
+
+        container.appendChild(card);
+      });
+      return;
+    }
+
+    // Fallback: galería de imágenes (como antes)
+    if (!school.images?.length) {
       container.innerHTML = "<p>No products found</p>";
       return;
     }

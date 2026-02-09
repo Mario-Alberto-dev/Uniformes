@@ -1,168 +1,117 @@
 <!DOCTYPE html>
 <html>
-
 <head>
-    <meta charset='utf-8'>
-    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title>shop</title>
-    <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <!-- Hoja de Estilos CSS -->
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="styleshop.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-        integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
-
+<meta charset="utf-8"/>
+<meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+<title>shop</title>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<!-- Hoja de Estilos CSS -->
+<link href="style.css" rel="stylesheet"/>
+<link href="styleshop.css" rel="stylesheet"/>
+<link crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-..." referrerpolicy="no-referrer" rel="stylesheet"/>
 </head>
-
 <body>
-
-    <div class="shop-bar">
-
-        <li class="cart-nav">
-            <button type="button" id="cartBtn" class="cart-btn1" aria-label="Abrir carrito">
-                🛒 <span id="cartCount" class="cart-badge">0</span>
-            </button>
-        </li>
-
-        <a class="inicio" href="index.html"><i class="fa-solid fa-house"></i>Volver al inicio</a>
-
-    </div>
-
-    <!-- =====================================================
+<div class="shop-bar">
+<li class="cart-nav">
+<button aria-label="Abrir carrito" class="cart-btn1" id="cartBtn" type="button">
+                🛒 <span class="cart-badge" id="cartCount">0</span>
+</button>
+</li>
+<a class="inicio" href="index.html"><i class="fa-solid fa-house"></i>Volver al inicio</a>
+</div>
+<!-- =====================================================
          NUEVO: Carrito de PRE-ORDEN (solo solicitud, no compra)
          - Se guarda en localStorage
          - Se envía por WhatsApp con formato
          ===================================================== -->
-    <div id="cartOverlay" class="cart-overlay" hidden></div>
-
-    <aside id="cartDrawer" class="cart-drawer" aria-hidden="true">
-        <div class="cart-header">
-            <h4>Tu pre-orden</h4>
-            <button type="button" id="cartClose" class="cart-close" aria-label="Cerrar">✕</button>
-        </div>
-
-        <div id="cartItems" class="cart-items"></div>
-
-        <div class="cart-footer">
-            <div class="cart-total">
-                <span>Total:</span>
-                <strong id="cartTotal">$0.00</strong>
-            </div>
-
-            <button type="button" id="cartClear" class="cart-clear">Vaciar</button>
-            <button type="button" id="cartCheckout" class="cart-checkout">Enviar pre-orden por WhatsApp</button>
-        </div>
-    </aside>
-    <!-- ===================================================== /Carrito PRE-ORDEN ===================================================== -->
-
-    <!-- NUEVO: Lógica del carrito de pre-orden -->
-    <script src="js/preorder-cart.js"></script>
-
-    <div class="shop-view">
-
-        <img class="shop-img" src="img/bg-img/Krisly.png" alt="logo Krisly">
-
-        <section class="filter">
-
-            <h1 class="text-form">SELECCIONA TUS PRODUCTOS</h1>
-
-
-            <!-- filters of each catalog -->
-
-            <form class="form-filter" id="filter-form">
-                <label>
+<div class="cart-overlay" hidden="" id="cartOverlay"></div>
+<aside aria-hidden="true" class="cart-drawer" id="cartDrawer">
+<div class="cart-header">
+<h4>Tu pre-orden</h4>
+<button aria-label="Cerrar" class="cart-close" id="cartClose" type="button">✕</button>
+</div>
+<div class="cart-items" id="cartItems"></div>
+<div class="cart-footer">
+<div class="cart-total">
+<span>Total:</span>
+<strong id="cartTotal">$0.00</strong>
+</div>
+<button class="cart-clear" id="cartClear" type="button">Vaciar</button>
+<button class="cart-checkout" id="cartCheckout" type="button">Enviar pre-orden por WhatsApp</button>
+</div>
+</aside>
+<!-- ===================================================== /Carrito PRE-ORDEN ===================================================== -->
+<!-- NUEVO: Lógica del carrito de pre-orden -->
+<script src="js/preorder-cart.js"></script>
+<div class="shop-view">
+<img alt="logo Krisly" class="shop-img" src="img/bg-img/Krisly.png"/>
+<section class="filter">
+<h1 class="text-form">SELECCIONA TUS PRODUCTOS</h1>
+<!-- filters of each catalog -->
+<form class="form-filter" id="filter-form">
+<label>
 
                     Estado
                     <select id="estados">
-                        <option value="CDMX">CDMX</option>
-                        <option value="Nuevo Leon">Nuevo Leon</option>
-                        <option value="Chihuahua">Chihuahua</option>
-                        <option value="San luis Potosi">San Luis Potosi</option>
-                        <option value="Veracruz">Veracruz</option>
-                        <option value="Guanajuato">Guanajuato</option>
-                        <option value="USA">USA</option>
-                    </select>
-
-                </label>
-
-                <label>
+<option value="CDMX">CDMX</option>
+<option value="Nuevo Leon">Nuevo Leon</option>
+<option value="Chihuahua">Chihuahua</option>
+<option value="San luis Potosi">San Luis Potosi</option>
+<option value="Veracruz">Veracruz</option>
+<option value="Guanajuato">Guanajuato</option>
+<option value="USA">USA</option>
+</select>
+</label>
+<label>
 
                     Escuela
                     <select id="escuelas">
-                        <option value="Instituto Miguel Angel">Instituto Miguel Angel</option>
-                        <option value="CEB">CEB</option>
-                        <option value="Colegio Belfort">Colegio Belfort</option>
-                        <option value="Colegio Morelos">Colegio Morelos</option>
-                        <option value="Kids Center">Kids Center</option>
-                        <option value="Universidad Panamericana">Universidad Panamericana</option>
-                        <option value="Colegio Belfort">Colegio Belfort</option>
-
-                    </select>
-
-                </label>
-
-                <label>
+<option value="Instituto Miguel Angel">Instituto Miguel Angel</option>
+<option value="CEB">CEB</option>
+<option value="Colegio Belfort">Colegio Belfort</option>
+<option value="Colegio Morelos">Colegio Morelos</option>
+<option value="Kids Center">Kids Center</option>
+<option value="Universidad Panamericana">Universidad Panamericana</option>
+<option value="Colegio Belfort">Colegio Belfort</option>
+</select>
+</label>
+<label>
 
                     Escolaridad
                     <select id="escolaridad">
-                        <option value="all">All</option>
-                        <option value="Maternal">Maternal</option>
-                        <option value="Prescolar">Prescolar</option>
-                        <option value="Primaria">Primaria</option>
-                        <option value="Secundaria">Secundaria</option>
-                        <option value="Preparatoria">Preparatoria</option>
-                        <option value="Universidad">Universidad</option>
-                    </select>
-
-                </label>
-
-            </form>
-
-
-        </section>
-
-        <!-- form of selectProduct -->
-
-        <div id="productDetail" class="product-detail" hidden>
-
-            <img id="productImage" alt="Producto seleccionado">
-
-            <h3 id="productName"></h3>
-
-            <label>
+<option value="all">All</option>
+<option value="Maternal">Maternal</option>
+<option value="Prescolar">Prescolar</option>
+<option value="Primaria">Primaria</option>
+<option value="Secundaria">Secundaria</option>
+<option value="Preparatoria">Preparatoria</option>
+<option value="Universidad">Universidad</option>
+</select>
+</label>
+</form>
+</section>
+<!-- form of selectProduct -->
+<div class="product-detail" hidden="" id="productDetail">
+<img alt="Producto seleccionado" id="productImage"/>
+<h3 id="productName"></h3><p class="product-price" id="productPrice"></p>
+<label>
                 Talla
-                <select id="productSize">
-                    <option value="CH">CH</option>
-                    <option value="M">M</option>
-                    <option value="G">G</option>
-                    <option value="XG">XG</option>
-                </select>
-            </label>
-
-            <div class="qty-control">
-                <button id="qtyMinus">−</button>
-                <span id="qtyValue">1</span>
-                <button id="qtyPlus">+</button>
-            </div>
-
-            <button id="addToCart">Agregar Pre-Orden</button>
-        </div>
-
-
-
-        <!-- school containers -->
-        <div class="clothes-container" id="clothesContainer"></div>
-
-
-    </div>
-
-
-    <script src="db/Catalogo.js"></script>
-    <script src="js/catalog-render.js"></script>
-    <script src="js/product-detail.js"></script>
-    <script src="js/form.js"></script>
-    <script src="js/filter.js"></script>
-
+                <select id="productSize"><option value="">Selecciona talla</option></select>
+</label>
+<div class="qty-control">
+<button id="qtyMinus">−</button>
+<span id="qtyValue">1</span>
+<button id="qtyPlus">+</button>
+</div>
+<button id="addToCart">Agregar Pre-Orden</button>
+</div>
+<!-- school containers -->
+<div class="clothes-container" id="clothesContainer"></div>
+</div>
+<script src="db/Catalogo.js"></script>
+<script src="js/catalog-render.js"></script>
+<script src="js/product-detail.js"></script>
+<script src="js/form.js"></script>
+<script src="js/filter.js"></script>
 </body>
-
 </html>
