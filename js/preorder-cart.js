@@ -48,9 +48,22 @@
       if (!item || !item.id || !item.name) return;
 
       const cart = loadCart();
+
+      // Migración: si hay items viejos sin precio, intenta calcularlo con talla
+      let changed = false;
+      cart.forEach(it=>{
+        if ((!it.price || Number(it.price)===0) && it.preciosPorTalla && it.size){
+          const pr = Number(it.preciosPorTalla[it.size] || 0);
+          if (pr){ it.price = pr; changed = true; }
+        }
+      });
+      if (changed) saveCart(cart);
+
       const existing = cart.find(x => x.id === item.id && x.size === (item.size || ""));
       if (existing){
         existing.qty = Math.max(1, (existing.qty || 1) + (item.qty || 1));
+        if (item.price != null) existing.price = Number(item.price || 0);
+        if (item.preciosPorTalla) existing.preciosPorTalla = item.preciosPorTalla;
       } else {
         cart.push({
           id: String(item.id),
@@ -59,7 +72,9 @@
           img: item.img || "",
           qty: Math.max(1, Number(item.qty || 1)),
           size: item.size || "",   // <-- talla (opcional)
-          notes: item.notes || ""  // <-- notas (opcional)
+          notes: item.notes || "",
+          price: Number(item.price || 0),
+          preciosPorTalla: item.preciosPorTalla || null  // <-- notas (opcional)
         });
       }
       saveCart(cart);
@@ -69,8 +84,28 @@
 
     updateItem(index, patch){
       const cart = loadCart();
+
+      // Migración: si hay items viejos sin precio, intenta calcularlo con talla
+      let changed = false;
+      cart.forEach(it=>{
+        if ((!it.price || Number(it.price)===0) && it.preciosPorTalla && it.size){
+          const pr = Number(it.preciosPorTalla[it.size] || 0);
+          if (pr){ it.price = pr; changed = true; }
+        }
+      });
+      if (changed) saveCart(cart);
+
       if (!cart[index]) return;
       cart[index] = { ...cart[index], ...patch };
+
+      // Si cambia talla y hay precios por talla, recalcular precio unitario
+      if (Object.prototype.hasOwnProperty.call(patch || {}, "size")){
+        const pt = cart[index].preciosPorTalla;
+        if (pt && typeof pt === "object"){
+          const pr = Number(pt[cart[index].size] || 0);
+          cart[index].price = pr;
+        }
+      }
       // normalizamos qty
       cart[index].qty = Math.max(1, Number(cart[index].qty || 1));
       saveCart(cart);
@@ -79,6 +114,17 @@
 
     removeItem(index){
       const cart = loadCart();
+
+      // Migración: si hay items viejos sin precio, intenta calcularlo con talla
+      let changed = false;
+      cart.forEach(it=>{
+        if ((!it.price || Number(it.price)===0) && it.preciosPorTalla && it.size){
+          const pr = Number(it.preciosPorTalla[it.size] || 0);
+          if (pr){ it.price = pr; changed = true; }
+        }
+      });
+      if (changed) saveCart(cart);
+
       cart.splice(index, 1);
       saveCart(cart);
       cartAPI._syncBadges();
@@ -116,6 +162,17 @@
       if (!cartAPI._hasDrawer()) return;
 
       const cart = loadCart();
+
+      // Migración: si hay items viejos sin precio, intenta calcularlo con talla
+      let changed = false;
+      cart.forEach(it=>{
+        if ((!it.price || Number(it.price)===0) && it.preciosPorTalla && it.size){
+          const pr = Number(it.preciosPorTalla[it.size] || 0);
+          if (pr){ it.price = pr; changed = true; }
+        }
+      });
+      if (changed) saveCart(cart);
+
       const wrap = $("#cartItems");
       const totalEl = $("#cartTotal");
       const countEl = $("#cartCount");
@@ -165,6 +222,17 @@
       $$("[data-inc]", wrap).forEach(b => b.onclick = () => {
         const i = Number(b.getAttribute("data-inc"));
         const cart = loadCart();
+
+      // Migración: si hay items viejos sin precio, intenta calcularlo con talla
+      let changed = false;
+      cart.forEach(it=>{
+        if ((!it.price || Number(it.price)===0) && it.preciosPorTalla && it.size){
+          const pr = Number(it.preciosPorTalla[it.size] || 0);
+          if (pr){ it.price = pr; changed = true; }
+        }
+      });
+      if (changed) saveCart(cart);
+
         cartAPI.updateItem(i, { qty: Number(cart[i].qty||1) + 1 });
         cartAPI._render();
       });
@@ -172,6 +240,17 @@
       $$("[data-dec]", wrap).forEach(b => b.onclick = () => {
         const i = Number(b.getAttribute("data-dec"));
         const cart = loadCart();
+
+      // Migración: si hay items viejos sin precio, intenta calcularlo con talla
+      let changed = false;
+      cart.forEach(it=>{
+        if ((!it.price || Number(it.price)===0) && it.preciosPorTalla && it.size){
+          const pr = Number(it.preciosPorTalla[it.size] || 0);
+          if (pr){ it.price = pr; changed = true; }
+        }
+      });
+      if (changed) saveCart(cart);
+
         cartAPI.updateItem(i, { qty: Math.max(1, Number(cart[i].qty||1) - 1) });
         cartAPI._render();
       });
@@ -187,6 +266,7 @@
       $$("input[data-size]", wrap).forEach(inp => inp.oninput = () => {
         const i = Number(inp.getAttribute("data-size"));
         cartAPI.updateItem(i, { size: inp.value });
+        cartAPI._render();
       });
       $$("input[data-notes]", wrap).forEach(inp => inp.oninput = () => {
         const i = Number(inp.getAttribute("data-notes"));
@@ -256,9 +336,21 @@
       cartAPI._render();
     });
 
-    if (btnCheckout) btnCheckout.addEventListener("click", async () => {
+    if (btnCheckout) btnCheckout.addEventListener("click", (e) => {
+      if (e && e.preventDefault) e.preventDefault();
       // --- Genera el texto de pre-orden para WhatsApp (sin compra, solo solicitud) ---
       const cart = loadCart();
+
+      // Migración: si hay items viejos sin precio, intenta calcularlo con talla
+      let changed = false;
+      cart.forEach(it=>{
+        if ((!it.price || Number(it.price)===0) && it.preciosPorTalla && it.size){
+          const pr = Number(it.preciosPorTalla[it.size] || 0);
+          if (pr){ it.price = pr; changed = true; }
+        }
+      });
+      if (changed) saveCart(cart);
+
       if (!cart.length){
         toast("Tu pre-orden está vacía.");
         return;
@@ -277,51 +369,53 @@
            };
            
            const lines = [];
-           lines.push("Hola, buen día");
+           lines.push("Hola");
            lines.push("");
-           lines.push("Me gustaría solicitar la *cotización* de la siguiente pre-orden de uniformes:");
+           lines.push("Quisiera confirmar disponibilidad de la siguiente pre-orden:");
            lines.push("");
 
            // Datos seleccionados por el usuario
-           const meta = [
-              pretty("Estado", estado),
-                pretty("Escuela", escuelaSel),
-                  pretty("Escolaridad", escolaridadSel),
-                  ].filter(Boolean);
+           lines.push(`Estado: ${estado}`);
+           lines.push(`Escuela: ${escuelaSel}`);
+           lines.push("");
+           lines.push("Pedido:");
 
-                  if (meta.length) {
-                      lines.push(meta.join("\n"));
-                        lines.push("");
-                        }
-                        
-                        lines.push(" Pedido:");
-                        cart.forEach((it, n) => {
-                            const talla = it.size ? ` – Talla: ${it.size}` : "";
-                              const notas = it.notes ? ` – Notas: ${it.notes}` : "";
-                                const cleanName = String(it.name || "")
-                                  .replace(/^[\s.\d]+/, "")
-                                  .trim();
-      lines.push(`${n+1}) ${it.qty} x ${cleanName}${talla}${notas}`);
-                                });
-                                
-                                lines.push("");
-                                lines.push("¿Me podrían apoyar con el *costo por pieza y el total*, por favor?");
-                                lines.push("Quedo atento(a). ¡Gracias!");
-                                const text = lines.join("\n");
+           let total = 0;
+           cart.forEach((it, n) => {
+             const cleanName = String(it.name || "Producto").replace(/\s+/g, " ").trim();
+             const talla = it.size ? ` – Talla: ${it.size}` : "";
+             const pu = Number(it.price || 0);
+             const sub = pu * Number(it.qty || 0);
+             total += sub;
+             lines.push(`${n+1}) ${it.qty} x ${cleanName}${talla} – P.U.: ${money(pu)} – Subtotal: ${money(sub)}`);
+           });
+
+           lines.push("");
+           lines.push(`Total estimado: ${money(total)}`);
+           lines.push("");
+           lines.push("¿Me confirman por favor si hay existencia y el tiempo estimado de entrega?");
+           lines.push("");
+           lines.push("Quedo atento(a), gracias.");
+           const text = lines.join("\n");
 
 
       // Copiar al portapapeles si el navegador lo permite
       try {
-        await navigator.clipboard.writeText(text);
-        toast("Texto copiado ✅ Abriendo WhatsApp…");
+        if (navigator.clipboard && navigator.clipboard.writeText){
+          navigator.clipboard.writeText(text)
+            .then(()=>toast("Texto copiado ✅ Abriendo WhatsApp…"))
+            .catch(()=>toast("Abriendo WhatsApp…"));
+        } else {
+          toast("Abriendo WhatsApp…");
+        }
       } catch {
         toast("Abriendo WhatsApp…");
       }
 
       // WhatsApp share sin número (el usuario elige contacto)
       const WHATSAPP_PHONE = "522722487124";
-      const url = `https://wa.me/${WHATSAPP_PHONE}?text=${encodeURIComponent(text)}`;
-      window.open(url, "_blank");
+      const url = `https://api.whatsapp.com/send?phone=${WHATSAPP_PHONE}&text=${encodeURIComponent(text)}`;
+      window.location.href = url; // redirige (más compatible que popups)
     });
 
     // render inicial del badge
@@ -341,3 +435,4 @@
   window.addEventListener('resize', apply);
   if (window.visualViewport) window.visualViewport.addEventListener('resize', apply);
 })();
+
