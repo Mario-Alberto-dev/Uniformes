@@ -6,6 +6,77 @@ document.addEventListener("DOMContentLoaded", () => {
     return;
   }
 
+  // -----------------------------
+  // Select dependiente: Estado -> Escuelas
+  // -----------------------------
+  function getEscuelasDisponibles(estado, escolaridad){
+    if (!estado) return [];
+    const esc = (schoolsCatalog || [])
+      .filter(s => s.estado === estado)
+      .filter(s => !escolaridad || escolaridad === 'all' || (Array.isArray(s.escolaridad) && s.escolaridad.includes(escolaridad)))
+      .map(s => s.escuela)
+      .filter(Boolean);
+    // únicos, ordenados
+    return Array.from(new Set(esc)).sort((a,b)=>a.localeCompare(b,'es'));
+  }
+
+  function repoblarEscuelas(){
+    const estadoSel = document.getElementById('estados');
+    const escuelaSel = document.getElementById('escuelas');
+    const escolaridadSel = document.getElementById('escolaridad');
+
+    if (!estadoSel || !escuelaSel) return;
+
+    const estado = estadoSel.value;
+    const escolaridad = escolaridadSel ? escolaridadSel.value : 'all';
+    const prev = escuelaSel.value;
+
+    // ¿Este estado tiene escuelas en general (sin importar escolaridad)?
+    const escuelasAny = getEscuelasDisponibles(estado, 'all');
+    const hayEscuelasEnEstado = escuelasAny.length > 0;
+
+    // Si el estado NO tiene escuelas, también bloqueamos Escolaridad (y lo reseteamos)
+    if (escolaridadSel) {
+      escolaridadSel.disabled = Boolean(estado) && !hayEscuelasEnEstado;
+      if (escolaridadSel.disabled) {
+        escolaridadSel.value = 'all';
+      }
+    }
+
+    const escuelas = getEscuelasDisponibles(estado, escolaridadSel && escolaridadSel.disabled ? 'all' : escolaridad);
+
+    // reconstruir options (incluye placeholder para poder resetear)
+    escuelaSel.innerHTML = '';
+    const ph = document.createElement('option');
+    ph.value = '';
+    if (!estado) {
+      ph.textContent = 'Selecciona escuela';
+    } else if (escuelas.length) {
+      ph.textContent = 'Selecciona escuela';
+    } else {
+      ph.textContent = hayEscuelasEnEstado ? 'No hay escuelas para esta escolaridad' : 'No hay escuelas para este estado';
+    }
+    escuelaSel.appendChild(ph);
+
+    escuelas.forEach(nombre => {
+      const opt = document.createElement('option');
+      opt.value = nombre;
+      opt.textContent = nombre;
+      escuelaSel.appendChild(opt);
+    });
+
+    // habilitar/deshabilitar si hay opciones
+    escuelaSel.disabled = !escuelas.length;
+
+    // conservar selección previa si sigue existiendo; si no, resetear
+    if (prev && escuelas.includes(prev)) {
+      escuelaSel.value = prev;
+    } else {
+      escuelaSel.value = '';
+    }
+  }
+
+
   function getFilters() {
     return {
       estado: document.getElementById("estados")?.value,
@@ -104,11 +175,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
   document
     .getElementById("filter-form")
-    ?.addEventListener("change", () => {
+    ?.addEventListener("change", (e) => {
+      // Si cambia Estado o Escolaridad, re-cargamos escuelas antes de filtrar
+      if (e?.target?.id === "estados" || e?.target?.id === "escolaridad") {
+        repoblarEscuelas();
+      }
       renderSchoolImages(findSchool());
     });
-
-  // FIRST RENDER
+// FIRST RENDER
+  // Asegura que los selects estén sincronizados al cargar
+  repoblarEscuelas();
   renderSchoolImages(findSchool());
 
 });

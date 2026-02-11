@@ -9,14 +9,14 @@ const schoolsCatalog = [
       "img/galeria/IMA/Bata_de_laboratorio.png",
       "img/galeria/IMA/Bata_pintor_(uso preescolar).png",
       "img/galeria/IMA/Bermuda_verano.png",
-      "img/galeria/IMA/Blusa_de_gala_niña.png",
+      "img/galeria/IMA/Blusa_de_gala_nina.png",
       "img/galeria/IMA/Bufanda_invierno.png",
       "img/galeria/IMA/Cachuchas_IMA.png",
       "img/galeria/IMA/Calcetas.png",
       "img/galeria/IMA/Calcetines.png",
-      "img/galeria/IMA/Camisa_de_gala_niño.png",
+      "img/galeria/IMA/Camisa_de_gala_nino.png",
       "img/galeria/IMA/Chaleco_invierno.png",
-      "img/galeria/IMA/Chaleco_niña.png",
+      "img/galeria/IMA/Chaleco_nina.png",
       "img/galeria/IMA/Chamarra_deportivo.png",
       "img/galeria/IMA/Chamarra_invierno.png",
       "img/galeria/IMA/Corbata.png",
@@ -25,27 +25,27 @@ const schoolsCatalog = [
       "img/galeria/IMA/Gorro_invierno.png",
       "img/galeria/IMA/Guantes_invierno.png",
       "img/galeria/IMA/Juego_Chamarra_y_pants_deportivo.png",
-      "img/galeria/IMA/Liston_gala _niño_niña.jpg",
+      "img/galeria/IMA/Liston_gala _nino_nina.jpg",
       "img/galeria/IMA/Mallas.png",
-      "img/galeria/IMA/moño_1.jpg",
-      "img/galeria/IMA/moño_2.jpg",
-      "img/galeria/IMA/Pantalon_niño.png",
+      "img/galeria/IMA/mono_1.jpg",
+      "img/galeria/IMA/mono_2.jpg",
+      "img/galeria/IMA/Pantalon_nino.png",
       "img/galeria/IMA/Pants_deportivo.png",
-      "img/galeria/IMA/Playera tipo polo niño.png",
+      "img/galeria/IMA/Playera tipo polo nino.png",
       "img/galeria/IMA/Playera_deportiva.png",
-      "img/galeria/IMA/Playera_tipo_polo_niña.png",
+      "img/galeria/IMA/Playera_tipo_polo_nina.png",
       "img/galeria/IMA/Short_lycra.jpg",
-      "img/galeria/IMA/Sueter_cuello_V_niño.png",
-      "img/galeria/IMA/Sueter_de_niña.png",
-      "img/galeria/IMA/Uniforme_niña.png",
-      "img/galeria/IMA/Uniforme_niño.png"
+      "img/galeria/IMA/Sueter_cuello_V_nino.png",
+      "img/galeria/IMA/Sueter_de_nina.png",
+      "img/galeria/IMA/Uniforme_nina.png",
+      "img/galeria/IMA/Uniforme_nino.png"
     ],
     products: [
       {
         id: "ima_bata_de_laboratorio_niña",
         prendaKey: "Bata_de_laboratorio_niña",
         name: "Bata de laboratorio (Niña)",
-        img: "img/galeria/IMA/newclothes/bataniña.png",
+        img: "img/galeria/IMA/newclothes/batanina.png",
         preciosPorTalla: {
           "1-6": 465,
           "8-10-12": 485,
@@ -58,7 +58,7 @@ const schoolsCatalog = [
         id: "ima_bata_de_laboratorio_ni_o",
         prendaKey: "Bata_de_laboratorio_niño",
         name: "Bata de laboratorio (Niño)",
-        img: "img/galeria/IMA/newclothes/bataniño.png",
+        img: "img/galeria/IMA/newclothes/batanino.png",
         preciosPorTalla: {
           "1-6": 465,
           "8-10-12": 485,
@@ -81,7 +81,7 @@ const schoolsCatalog = [
         id: "ima_bermuda_verano",
         prendaKey: "Bermuda_verano",
         name: "Bermuda verano",
-        img: "img/galeria/IMA/newclothes/bermudaniño.png",
+        img: "img/galeria/IMA/newclothes/bermudanino.png",
         preciosPorTalla: {
           "1-6": 445,
           "8-10-12": 465,
@@ -93,7 +93,7 @@ const schoolsCatalog = [
         id: "ima_blusa_de_gala_ni_a",
         prendaKey: "Blusa_de_gala_niña",
         name: "Blusa de gala niña",
-        img: "img/galeria/IMA/newclothes/blusa-galaniña.png",
+        img: "img/galeria/IMA/newclothes/blusa-galanina.png",
         preciosPorTalla: {
           "1-6": 495,
           "8-10-12": 515,
@@ -106,7 +106,7 @@ const schoolsCatalog = [
         id: "ima_camisa_de_gala_ni_o",
         prendaKey: "Camisa_de_gala_niño",
         name: "Camisa de gala niño",
-        img: "img/galeria/IMA/newclothes/camisa-galaniño.png",
+        img: "img/galeria/IMA/newclothes/camisa-galanino.png",
         preciosPorTalla: {
           "1-6": 495,
           "8-10-12": 515,
@@ -119,7 +119,7 @@ const schoolsCatalog = [
         id: "ima_chaleco_ni_a",
         prendaKey: "Chaleco_niña",
         name: "Chaleco niña",
-        img: "img/galeria/IMA/newclothes/chaleconiña.png",
+        img: "img/galeria/IMA/newclothes/chaleconina.png",
         preciosPorTalla: {
           "1-6": 595,
           "8-10-12": 625,
@@ -132,7 +132,7 @@ const schoolsCatalog = [
         id: "ima_chamarra_deportivo",
         prendaKey: "Chamarra_deportivo",
         name: "Chamarra deportivo",
-        img: "img/galeria/IMA/newclothes/chamarra-niño.png",
+        img: "img/galeria/IMA/newclothes/chamarra-nino.png",
         preciosPorTalla: {
           "1-6": 595,
           "8-10-12": 625,
@@ -183,7 +183,7 @@ const schoolsCatalog = [
         id: "ima_pantalon_ni_o",
         prendaKey: "Pantalon_niño",
         name: "Pantalon niño",
-        img: "img/galeria/IMA/newclothes/pantalonNiño.png",
+        img: "img/galeria/IMA/newclothes/pantalonNino.png",
         preciosPorTalla: {
           "1-6": 495,
           "8-10-12": 515,
@@ -222,7 +222,7 @@ const schoolsCatalog = [
         id: "ima_playera_tipo_polo_ni_a",
         prendaKey: "Playera_tipo_polo_niña",
         name: "Playera tipo polo (Niña)",
-        img: "img/galeria/IMA/newclothes/playeratipopoloniña.png",
+        img: "img/galeria/IMA/newclothes/playeratipopoloNina.png",
         preciosPorTalla: {
           "1-6": 445,
           "8-10-12": 465,
@@ -235,7 +235,7 @@ const schoolsCatalog = [
         id: "ima_playera_tipo_polo_ni_o",
         prendaKey: "Playera_tipo_polo_niño",
         name: "Playera tipo polo (Niño)",
-        img: "img/galeria/IMA/newclothes/playeratipopoloniña.png",
+        img: "img/galeria/IMA/newclothes/playeratipopoloNina.png",
         preciosPorTalla: {
           "1-6": 445,
           "8-10-12": 465,
@@ -260,7 +260,7 @@ const schoolsCatalog = [
         id: "ima_sueter_cuello_v_ni_o",
         prendaKey: "Sueter_cuello_V_niño",
         name: "Sueter cuello V niño",
-        img: "img/galeria/IMA/newclothes/sueterNiñoV.png",
+        img: "img/galeria/IMA/newclothes/sueterNinoV.png",
         preciosPorTalla: {
           "1-6": 595,
           "8-10-12": 625,
@@ -273,7 +273,7 @@ const schoolsCatalog = [
         id: "ima_sueter_de_ni_a",
         prendaKey: "Sueter_de_niña",
         name: "Sueter de niña",
-        img: "img/galeria/IMA/newclothes/sueterNiña.png",
+        img: "img/galeria/IMA/newclothes/sueterNina.png",
         preciosPorTalla: {
           "1-6": 595,
           "8-10-12": 625,
@@ -313,7 +313,7 @@ const schoolsCatalog = [
         id: "ima_mo_o_1",
         prendaKey: "moño_1",
         name: "moño 1",
-        img: "img/galeria/IMA/newclothes/moño.png",
+        img: "img/galeria/IMA/newclothes/mono.png",
         preciosPorTalla: {
           "1-6": 25
         }
@@ -322,7 +322,7 @@ const schoolsCatalog = [
         id: "ima_mo_o_2",
         prendaKey: "moño_2",
         name: "moño 2",
-        img: "img/galeria/IMA/newclothes/moño2.png",
+        img: "img/galeria/IMA/newclothes/mono2.png",
         preciosPorTalla: {
           "1-6": 25
         }
